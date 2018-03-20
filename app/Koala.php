@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Koala extends Model
 {
-    protected $table = "koalas";
+    protected $table = "person";
     public $timestamps = false;
-    protected $fillable = ['name'];
+    protected $fillable = ['fname', 'lname'.'height', 'kilograms'];
 }

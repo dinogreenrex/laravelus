@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Koala;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Monolog\Logger;
 
 class KoalasController extends Controller
 {
@@ -19,7 +20,6 @@ class KoalasController extends Controller
      */
     public function index()
     {
-
         return Koala::all();
     }
 
@@ -41,7 +41,15 @@ class KoalasController extends Controller
      */
     public function store(Request $request)
     {
-        $koala = Koala::create($request->all());
+        $koala = new Koala;
+
+        $koala->fname = $request->get('fname');
+        $koala->lname = $request->get('lname');
+        $koala->height = $request->get('height');
+        $koala->kilograms = $request->get('kilograms');
+        $id = $koala->create()->id;
+        $koala->id = $id;
+
         return response()->json($koala, 201);
     }
 
@@ -77,8 +85,13 @@ class KoalasController extends Controller
      */
     public function update(Request $request, Koala $koala)
     {
-        $koala->update($request->all());
-        return response()->json($koala, 200);
+
+        $koala->fname = $request->get('fname');
+        $koala->lname = $request->get('lname');
+        $koala->height = $request->get('height');
+        $koala->kilograms = $request->get('kilograms');
+        $koala->update();
+        return response()->json($koala, 201);
     }
 
     /**

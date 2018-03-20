@@ -13,8 +13,13 @@ class CreateKoalasTable extends Migration
      */
     public function up()
     {
-        Schema::create('koalas', function (Blueprint $table) {
+        Schema::create('person', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('fname', 191)->nullable()->index('index_fname');
+            $table->string('lame', 191)->nullable()->index('index_lname');
+            $table->integer('height')->nullable()->index('index_height');
+            $table->integer('kilograms')->nullable()->index('index_kilos');
+            
             $table->timestamps();
         });
     }
