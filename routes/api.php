@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/koalas', 'Api\KoalasController@index');
 Route::get('/koalas/show/{koala}', 'Api\KoalasController@show');
 Route::resource('/koalas', 'Api\KoalasController');
+Route::apiResource('/PersonAddress', 'Api\PersonAddressController');
 Route::post('/koala/{koala}', 'Api\KoalasController@update');
 Route::post('/register', 'Auth\RegisterController@register');
 Route::post('/login', 'Auth\LoginController@login');
