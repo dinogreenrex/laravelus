@@ -13,7 +13,12 @@ class PersonAddressTableSeeder extends Seeder
      */
 	public function run()
 	{
-		$person = factory(PersonAddress::class,10)->create();
+		DB::table('person_address')->insert([
+			'street' => str_random(10),
+			'city' => str_random(10),
+			'country' => str_random(10),
+			'postalcode'=> rand(1000,2000)
+		]);
 
 	}
 }
