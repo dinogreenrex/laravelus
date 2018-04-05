@@ -17,20 +17,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/items/index', [
-    'as' => 'items.index', 'uses' => "ItemsController@index"]
-);
-Route::post('items/store',  [
-    'before' => 'csrf',
-    'as' => 'items.store', 'uses' => 'ItemsController@store']
-);
-Route::get('/items/create', [
-    'as' => 'items.create', 'uses' => 'ItemsController@create']
-);
-
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 
 /*Route::get("/api/koalas", function(Request $request){

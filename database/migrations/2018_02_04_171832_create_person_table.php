@@ -16,7 +16,7 @@ class CreateKoalasTable extends Migration
         Schema::create('person', function (Blueprint $table) {
             $table->increments('id');
             $table->string('fname', 191)->nullable()->index('index_fname');
-            $table->string('lame', 191)->nullable()->index('index_lname');
+            $table->string('lname', 191)->nullable()->index('index_lname');
             $table->integer('height')->nullable()->index('index_height');
             $table->integer('kilograms')->nullable()->index('index_kilos');
             
@@ -31,6 +31,6 @@ class CreateKoalasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('koalas');
+        Schema::dropIfExists('person');
     }
 }
