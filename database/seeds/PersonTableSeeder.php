@@ -12,13 +12,6 @@ class PersonTableSeeder extends Seeder
      */
     public function run()
     {
-	    DB::table('person')->insert(
-		    [
-			    'fname' => str_random(10),
-			    'flname' => str_random(10),
-			    'height' => int_random(10),
-			    'kilograms' => int_random(10),
-		    ]
-	    );
+	    $person = factory(Person::class,10)->create();
     }
 }
