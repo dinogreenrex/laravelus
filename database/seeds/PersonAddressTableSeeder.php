@@ -1,5 +1,6 @@
 <?php
 
+use App\PersonAddress;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
