@@ -14,10 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-	    $this->call([
-	    	PersonTableSeeder::class,
-		    PersonAddressTableSeeder::class,
-	    ]);
+
+		  $persons = factory(App\Person::class, 10)->create();
+	    $personAddresses = factory(App\PersonAddress::class, 10)->create();
 
     }
 }
