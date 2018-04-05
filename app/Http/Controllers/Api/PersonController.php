@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Koala;
+use App\Person;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Monolog\Logger;
 
-class KoalasController extends Controller
+class PersonController extends Controller
 {
     public function __construct()
     {
@@ -20,7 +20,7 @@ class KoalasController extends Controller
      */
     public function index()
     {
-        return Koala::all();
+        return Person::all();
     }
 
     /**
@@ -41,16 +41,16 @@ class KoalasController extends Controller
      */
     public function store(Request $request)
     {
-        $koala = new Koala;
+        $person = new Person;
 
-        $koala->fname = $request->get('fname');
-        $koala->lname = $request->get('lname');
-        $koala->height = $request->get('height');
-        $koala->kilograms = $request->get('kilograms');
-        $id = $koala->create()->id;
-        $koala->id = $id;
+        $person->fname = $request->get('fname');
+        $person->lname = $request->get('lname');
+        $person->height = $request->get('height');
+        $person->kilograms = $request->get('kilograms');
+        $id = $person->create()->id;
+        $person->id = $id;
 
-        return response()->json($koala, 201);
+        return response()->json($person, 201);
     }
 
 
@@ -60,9 +60,9 @@ class KoalasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Koala $koala)
+    public function show(Person $person)
     {
-        return $koala;
+        return $person;
     }
 
     /**
@@ -83,15 +83,15 @@ class KoalasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Koala $koala)
+    public function update(Request $request, Person $person)
     {
 
-        $koala->fname = $request->get('fname');
-        $koala->lname = $request->get('lname');
-        $koala->height = $request->get('height');
-        $koala->kilograms = $request->get('kilograms');
-        $koala->update();
-        return response()->json($koala, 201);
+        $person->fname = $request->get('fname');
+        $person->lname = $request->get('lname');
+        $person->height = $request->get('height');
+        $person->kilograms = $request->get('kilograms');
+        $person->update();
+        return response()->json($person, 201);
     }
 
     /**
@@ -100,9 +100,9 @@ class KoalasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Koala $koala)
+    public function destroy(Person $person)
     {
-        $koala->delete();
+        $person->delete();
         return response()->json(null,204);
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Koala extends Model
+class Person extends Model
 {
     protected $table = "person";
     public $timestamps = false;
