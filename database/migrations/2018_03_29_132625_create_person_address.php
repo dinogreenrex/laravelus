@@ -15,10 +15,10 @@ class CreatePersonAddress extends Migration
 	{
 		Schema::create('person_address', function (Blueprint $table) {
 			$table->increments('person_address_id');
-			$table->string('street');
-			$table->string('city');
-			$table->string('country');
-			$table->integer('postalcode');
+			$table->string('street')->nullable()->index('street');
+			$table->string('city')->nullable()->index('city');
+			$table->string('country')->nullable()->index('country');
+			$table->integer('postalcode')->nullable()->index('postalcode');
 		});
 	}
 
