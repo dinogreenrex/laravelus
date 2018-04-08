@@ -43,14 +43,14 @@ class PersonController extends Controller
     {
         $person = new Person;
 
-        $person->fname = $request->get('fname');
-        $person->lname = $request->get('lname');
-        $person->height = $request->get('height');
-        $person->kilograms = $request->get('kilograms');
-        $id = $person->create()->id;
-        $person->id = $id;
+        $person->fname = $request->fname;
+        $person->lname = $request->lname;
+        $person->height = $request->height;
+        $person->kilograms = $request->kilograms;
+        $person->save();
+        $id = $person->id;
 
-        return response()->json($person, 201);
+        return response()->json(array_push($person, $id), 201);
     }
 
 

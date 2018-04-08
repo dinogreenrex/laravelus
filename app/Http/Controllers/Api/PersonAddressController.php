@@ -7,6 +7,7 @@ use Faker\Provider\ar_JO\Person;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Monolog\Logger;
+use Illuminate\Support\Facades\DB;
 
 
 class PersonAddressController extends Controller
@@ -43,14 +44,18 @@ class PersonAddressController extends Controller
      */
     public function store(Request $request)
     {
-			$PA = new PersonAddress;
+			$PA = new PersonAddress();
 
-			$PA->street = $request->get('street');
-			$PA->city= $request->get('city');
-			$PA->country = $request->get('country');
-			$PA->postcode = $request->get('postcode');
-			$id = $PA->create()->id;
-			$PA->id = $id;
+			$PA->street = $request->street;
+			$PA->city= $request->city;
+			$PA->country = $request->country;
+			$PA->postalcode = $request->postcode;
+			$PA->save();
+			$id = $PA->id;
+	    /*$insert = DB::table('person_address')->insert(
+				['city' => $request->get('city'),'street' => $request->get('street'),
+					'country' => $request->get('country'), 'postalcode' => $request->get('postcode')]
+			);*/
 
 			return response()->json($PA, 201);
     }
