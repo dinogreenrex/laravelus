@@ -12,3 +12,9 @@ value in place of the existing value in .env file under APP_KEY
 
 Voila everything is up and running.
 
+To run the application you need
+1. react frontend with mysql 5.6 database installed. 
+`https://github.com/dinogreenrex/laravelus`    
+2. apache2.4 installed with the conf files from `https://github.com/dinogreenrex/apache-with-proxy`
+
+
