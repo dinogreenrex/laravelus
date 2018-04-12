@@ -51,13 +51,16 @@ class PersonAddressController extends Controller
 			$PA->country = $request->country;
 			$PA->postalcode = $request->postcode;
 			$PA->save();
-			$id = $PA->id;
+	    $newPerson= PersonAddress::find($PA->id);
+
+
+
 	    /*$insert = DB::table('person_address')->insert(
 				['city' => $request->get('city'),'street' => $request->get('street'),
 					'country' => $request->get('country'), 'postalcode' => $request->get('postcode')]
 			);*/
 
-			return response()->json($PA, 201);
+			return response()->json($newPerson, 201);
     }
 
     /**
@@ -91,6 +94,7 @@ class PersonAddressController extends Controller
      */
     public function update(Request $request, PersonAddress $personAddress)
     {
+	    $personAddress->id = $request->get('id');
 			$personAddress->street = $request->get('street');
 			$personAddress->city= $request->get('city');
 			$personAddress->country = $request->get('country');
