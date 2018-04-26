@@ -6,6 +6,7 @@ use App\PersonAddress;
 use Faker\Provider\ar_JO\Person;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Response;
 use Monolog\Logger;
 use Illuminate\Support\Facades\DB;
 
@@ -109,8 +110,10 @@ class PersonAddressController extends Controller
      * @param  \App\PersonAddress  $personAddress
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PersonAddress $personAddress)
+    public function destroy($personid)
     {
-        //
+				$pa = PersonAddress::find($personid);
+	      $pa->delete();
+	      return $pa->id;
     }
 }
